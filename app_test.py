@@ -107,6 +107,7 @@ def test_full_loan_calculation(client):
     for field, value in data.items():
         assert value.encode() in response.data
 
+# Issues Test
 def test_404_error_handling():
     client = app.test_client()
     response = client.get('/non-existent-page')
