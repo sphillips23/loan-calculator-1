@@ -106,3 +106,11 @@ def test_full_loan_calculation(client):
     print(" -- full loan calculation and amortization table integration test")
     for field, value in data.items():
         assert value.encode() in response.data
+
+def test_404_error_handling():
+    client = app.test_client()
+    response = client.get('/non-existent-page')
+    print("\r")
+    print(" -- 404 error test")
+    assert response.status_code == 404
+    assert b"Page not found" in response.data
